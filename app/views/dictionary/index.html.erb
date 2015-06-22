@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="span7">
+        <h1>People Dictionary</h1>
+        <p>Add people to the dictionary with the following form.</p>
+        <%= form_for @new_person, :url => { :action => "add" }  do |f|  %>
+                <%= f.text_field :first_name, :required => true, :placeholder => "First Name" %>
+                <% f.label :first_name, 'First Name' %>
+                <%= f.text_field :last_name, :required => true, :placeholder => "Last Name" %>
+                <% f.label :last_name, 'Last Name' %> </br>
+                <%= f.text_field :age, :placeholder => "Age"%></br>
+                <% f.label :age, 'Your Age' %>
+                <%= f.text_field :address, :placeholder => "Address"%></br>
+                <% f.label :address, 'Your Address' %>
+                <%= f.text_field :city, :placeholder => "City"%>
+                <% f.label :city, 'City' %>
+                <%= f.text_field :state, :placeholder => "State (abbr)"%></br>
+                <% f.label :state, 'State' %>
+                <%= f.text_field :zip_code, :placeholder => "Zip Code"%></br>
+                <% f.label :zip_code, 'Zip Code' %><hr style="border-color:#A2A2A2; width:400px; margin-left:20px;">
+                <%= f.text_field :company, :placeholder => "Company"%>
+                <% f.label :company, 'Company' %>
+                <%= f.text_field :job_title, :placeholder => "Job Title"%></br>
+                <% f.label :job_title, 'Job Title' %>
+                <%= f.text_field :email, :placeholder => "E-mail"%>
+                <% f.label :email, 'E-mail' %>
+                <%= f.text_field :phone, :placeholder => "Phone"%></br>
+                <% f.label :phone, 'Phone' %>
+                <%= f.submit "Add Person", class: "btn btn-primary" %>
+        <%end%>
+        <% if flash[:error] %>
+         <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert" >×</button>
+            <strong><%= flash[:error] %></strong>
+            </div>
+        <% end %>
+     <% if flash[:success] %>
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" >×</button>
+                <strong><%= flash[:success] %></strong>
+            </div>
+		<% end %>
+        <div class="well">
+            <% if @people.size > 0 %>
+              <% @people.each do |p| %> 
+                  <p><strong style="font-size:20px;"><%= p.first_name %> <%= p.last_name %></strong></br>
+                  Age: <%= p.age %></br>
+                  <%= p.address %>,  <%= p.city %>, <%= p.state %> <%= p.zip_code %></br>
+                  <%= p.job_title %> at <strong><%=p.company %></strong></br>
+                  <%= p.email %></br>
+                  <%= p.phone %>
+                  </p>
+                  <center><hr style="border-color:#A2A2A2; width:300px;"></center>
+              <% end %>
+          <% else %>
+              No people in the database.
+          <% end %>
+        </div>
+        </div>
+    </div>
+</div>
