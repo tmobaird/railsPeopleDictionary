@@ -3,6 +3,24 @@ This is a simple ruby on rails application that allows users to enter people's i
 
 <h2>Rails Directories and Configurations</h2>
 All controller files are located under the <b>/app/controllers/ directory</b>. The main controller file for this application is <b>tweets_controller.rb</b>. All view files are located under the <b>/app/views/tweets/</b> directory but the application.html.erb overall layout is located under the <b>/app/views/layout/</b> directory. My model is located in the <b>/app/models/</b> directory as the file tweet.rb.
+<h4>Cloning and Native Deployment</h4>
+If you would like to clone this repository you can with the following command:
+```
+git clone https://github.com/tmobaird/railsPeopleDictionary
+```
+From here to install the required gems, use the following comand:
+```
+bundle install
+```
+Lastly, to create and rake the databases, that are required to run this application, run the following:
+```
+bin/rake db:migrate RAILS_ENV=development
+```
+And BAM! you can now run this application using the following command:
+```
+rails server
+```
+Now your application can be found <a href="http://localhost:3000/dictionary/index">here</a>.
 
 <h2>Cucumber Testing</h2>
 This is a simple rails application that can be utilized to write simple cucumber tests. There are three sample tests written right now, which are located within the <b>/features/add.feature</b> file. The steps within this file are the Cucumber, or high level steps for Cucumber Testing. They are in the form of Gherkin syntax which relies on the idea of <b>Given, When, Then</b> keywords for writing the steps. The code behind the high level Cucumber steps likes in the <b>/features/step_definitions/navigation_steps.rb</b> file. This is a ruby file that uses regular expressions to capture the gherkin syntax in the Cucumber feature file, and use this to start the actual testing process. In my code, I utilize page objects that are essentially classes that function as each page that is used throughout the UI and testing process. For example, I have a super class AbstractPage which includes the general methods and instance variables that any page could have. From here, my DictionaryPage class inherits from AbstractPage defining the more specific methods and variables that are necessary to test this application. 
