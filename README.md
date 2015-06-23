@@ -35,7 +35,7 @@ cucumber /features/add.feature
 
 <h2>Cloud 9</h2>
 If you are using the cloud service Cloud 9, the following command will deploy your rails application to the address 
-<b>"http://peopledictionary-yourCloud9UserName.c9.io/dictionary/index</b>
+<b>"http://peopledictionary-yourCloud9UserName.c9.io/dictionary/index"</b>
 ```
 rails s -p $PORT -b $IP
 ```
